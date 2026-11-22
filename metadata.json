@@ -1,0 +1,6 @@
+{
+  "name": "Güolingo",
+  "description": "Sözləri öyrən, assosiasiyalarla yadda saxla! Süni intellekt dəstəkli mnemonik ingilis dili lüğət platforması.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

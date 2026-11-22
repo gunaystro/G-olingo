@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="az"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "outline-variant": "#494454",
+          "secondary-fixed": "#c4e7ff",
+          "on-error-container": "#ffdad6",
+          "on-primary-fixed": "#23005c",
+          "surface-variant": "#2f3446",
+          "background": "#0e1323",
+          "on-surface": "#dee1f9",
+          "primary": "#d0bcff",
+          "secondary-container": "#00a6e0",
+          "surface-container": "#1a1f30",
+          "secondary": "#7bd0ff",
+          "error": "#ffb4ab",
+          "on-tertiary-fixed": "#002109",
+          "tertiary-container": "#00a74b",
+          "primary-fixed-dim": "#d0bcff",
+          "surface-container-high": "#25293a",
+          "error-container": "#93000a",
+          "surface-container-highest": "#2f3446",
+          "on-error": "#690005",
+          "tertiary": "#4ae176",
+          "inverse-surface": "#dee1f9",
+          "on-tertiary-fixed-variant": "#005321",
+          "inverse-on-surface": "#2b3041",
+          "on-surface-variant": "#cbc3d7",
+          "surface-bright": "#34394a",
+          "on-background": "#dee1f9",
+          "surface-dim": "#0e1323",
+          "surface-container-low": "#161b2b",
+          "surface-container-lowest": "#080d1d",
+          "primary-container": "#a078ff",
+          "tertiary-fixed-dim": "#4ae176",
+          "on-secondary-fixed": "#001e2c",
+          "on-tertiary": "#003915",
+          "surface": "#0e1323",
+          "outline": "#958ea0",
+          "tertiary-fixed": "#6bff8f",
+          "on-secondary": "#00354a",
+          "inverse-primary": "#6d3bd7",
+          "on-primary-fixed-variant": "#5516be",
+          "surface-tint": "#d0bcff",
+          "on-secondary-fixed-variant": "#004c69",
+          "on-primary-container": "#340080",
+          "primary-fixed": "#e9ddff",
+          "on-primary": "#3c0091",
+          "secondary-fixed-dim": "#7bd0ff",
+          "on-secondary-container": "#00374d",
+          "on-tertiary-container": "#003111"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-lg": "1.5rem",
+          "space-md": "1rem",
+          "margin-lg": "2.5rem",
+          "margin-md": "1.5rem",
+          "gutter-lg": "1.5rem",
+          "space-2xl": "3rem",
+          "space-sm": "0.5rem",
+          "gutter": "1rem",
+          "space-xs": "0.25rem",
+          "space-xl": "2rem",
+          "margin": "1rem"
+        },
+        "fontFamily": {
+          "headline-md": ["Inter"],
+          "headline-lg": ["Inter"],
+          "headline-lg-mobile": ["Inter"],
+          "display-lg": ["Inter"],
+          "label-sm": ["Inter"],
+          "headline-sm": ["Inter"],
+          "label-md": ["Inter"],
+          "body-lg": ["Inter"],
+          "body-md": ["Inter"],
+          "body-sm": ["Inter"],
+          "label-lg": ["Inter"],
+          "display-lg-mobile": ["Inter"]
+        },
+        "fontSize": {
+          "headline-md": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+          "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+          "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+          "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+          "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+          "headline-sm": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+          "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+          "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+          "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+          "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary"><header class="fixed top-0 left-0 right-0 h-20 bg-surface-container-lowest/80 backdrop-blur-xl z-50 shadow-[0_1px_8px_rgba(0,0,0,0.2)]"><div class="h-20 max-w-7xl mx-auto px-margin-md flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-[280px]"><div class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center shadow-[0_0_16px_rgba(139,92,246,0.3)]"><span class="material-symbols-outlined text-primary text-[26px]">psychology_alt</span></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight font-bold">Güolingo</span><span class="px-1.5 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm uppercase font-bold tracking-wider">AI</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate hidden sm:block">Sözləri öyrən, assosiasiyalarla yadda saxla!</span></div></div><nav class="hidden lg:flex items-center gap-space-xs bg-surface-container-low/70 p-1.5 rounded-xl" data-active-classes="bg-surface-container-high text-secondary font-headline-sm font-semibold shadow-[0_0_12px_rgba(123,208,255,0.15)]"><a class="px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="ana-sehife" href="#">Ana səhifə</a><a class="px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="lugətim" href="#">Lüğətim</a><a class="px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="soz-karti" href="#">Söz Kartı</a><a class="px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="yeni-soz" href="#">Yeni Söz</a><a class="px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="test" href="#">Test</a></nav><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container px-space-md py-1.5 rounded-full shadow-[0_0_12px_rgba(56,189,248,0.08)]"><span class="material-symbols-outlined text-secondary text-[18px]">task_alt</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Hədəf:</span><span class="font-label-lg text-label-lg text-secondary font-bold">8/10 Söz</span></div><a class="w-9 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" data-path="tənzimləmələr" href="#"><span class="material-symbols-outlined text-[20px]">settings</span></a><a class="transition-transform hover:scale-105" data-path="profil" href="#"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></a></div></div></header><main class="w-full pt-20 bg-background min-h-screen"><div class="max-w-7xl mx-auto px-margin-md py-margin-md"><div class="flex flex-col w-full">
+<!-- Top Background Ambient Glows -->
+<div class="relative w-full">
+<div class="absolute -top-12 left-1/4 w-96 h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-10 right-10 w-80 h-80 bg-secondary-container/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<!-- Title & Summary Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary font-label-sm text-label-sm uppercase tracking-wider font-bold">Lüğət Arxivi</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">•</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Aktiv Dövriyyə</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight font-extrabold">Lüğətim <span class="text-primary font-normal text-headline-md tracking-normal">(My Vocabulary)</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Yadda saxladığın bütün sözləri nəzərdən keçir, axtarış et və assosiativ bağlarla möhkəmləndir.</p>
+</div>
+<!-- Main Batch Actions -->
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-all shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">quiz</span>
+<span class="font-label-lg text-label-lg">Hamısına test keç</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-primary text-on-primary hover:bg-primary-fixed-dim transition-all shadow-[0_4px_16px_rgba(208,188,255,0.25)] active:scale-95">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="font-label-lg text-label-lg font-bold">Yeni söz əlavə et</span>
+</button>
+</div>
+</div>
+<!-- KPI Metric Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-xl">
+<!-- Card 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="absolute -right-3 -bottom-3 w-16 h-16 bg-primary/5 rounded-full pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Ümumi sözlər</span>
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">auto_stories</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-extrabold tracking-tight">248</span>
+<span class="font-label-md text-label-md text-primary font-semibold">söz</span>
+</div>
+<div class="mt-space-sm flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<span class="text-tertiary flex items-center"><span class="material-symbols-outlined text-[16px]">trending_up</span>+12</span>
+<span>bu həftə daxil edilib</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="absolute -right-3 -bottom-3 w-16 h-16 bg-tertiary/5 rounded-full pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Mənimsənilmiş</span>
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-extrabold tracking-tight">182</span>
+<span class="font-label-md text-label-md text-tertiary font-semibold">söz (73%)</span>
+</div>
+<div class="mt-space-sm w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 73%"></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="absolute -right-3 -bottom-3 w-16 h-16 bg-secondary/5 rounded-full pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Təkrar tələb olunan</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-extrabold tracking-tight">42</span>
+<span class="font-label-md text-label-md text-secondary font-semibold">söz</span>
+</div>
+<div class="mt-space-sm flex items-center gap-space-xs text-secondary font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span>Yaddaş intervalları çatıb</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container-low shadow-sm flex flex-col justify-between relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="absolute -right-3 -bottom-3 w-16 h-16 bg-primary-container/10 rounded-full pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Yeni əlavə edilmiş</span>
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">fiber_new</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-extrabold tracking-tight">24</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-semibold">söz</span>
+</div>
+<div class="mt-space-sm flex items-center gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+<span>Mnemonik kartlar hazırdır</span>
+</div>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="p-space-md rounded-xl bg-surface-container-low mb-space-lg space-y-space-md shadow-sm">
+<div class="flex flex-col lg:flex-row items-center gap-space-md">
+<!-- Search Input -->
+<div class="relative w-full lg:flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface-container-high text-on-surface placeholder:text-outline pl-11 pr-4 py-3 rounded-lg text-body-md focus:outline-none focus:bg-surface-variant transition-all" id="wordSearchInput" placeholder="İngilis sözü və ya Azərbaycan mənasını axtar..." type="text"/>
+<span class="absolute right-3.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm uppercase hidden sm:block">⌘K</span>
+</div>
+<!-- Sort Select & Additional Tools -->
+<div class="flex items-center gap-space-sm w-full lg:w-auto">
+<div class="flex items-center gap-space-xs bg-surface-container-high px-space-md py-2.5 rounded-lg flex-1 lg:flex-none">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">sort</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Sırala:</span>
+<select class="bg-transparent font-label-lg text-label-lg text-on-surface focus:outline-none cursor-pointer">
+<option class="bg-surface-container text-on-surface" value="latest">Ən son əlavə edilənlər</option>
+<option class="bg-surface-container text-on-surface" value="alphabetical">Əlifba sırası (A-Z)</option>
+<option class="bg-surface-container text-on-surface" value="mastery">Mənimsəmə dərəcəsinə görə</option>
+<option class="bg-surface-container text-on-surface" value="review">Təkrar prioriteti</option>
+</select>
+</div>
+<button class="w-10 h-10 rounded-lg bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-all">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<button class="px-space-md py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all">
+          Hamısı (248)
+        </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all">
+          A1-A2 (45)
+        </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all">
+          B1-B2 (134)
+        </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all">
+          C1-C2 (69)
+        </button>
+<div class="h-4 w-px bg-surface-container-highest mx-1"></div>
+<button class="flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-secondary font-label-md text-label-md transition-all">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+          Çətin sözlər (18)
+        </button>
+<button class="flex items-center gap-1.5 px-space-md py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-md text-label-md transition-all">
+<span class="material-symbols-outlined text-[16px]">lightbulb</span>
+          Yaddaş bağı olanlar (210)
+        </button>
+</div>
+</div>
+<!-- Master-Detail Split Canvas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT / MAIN: Word Collection List (7 Cols) -->
+<div class="lg:col-span-7 space-y-space-sm" id="vocabularyListContainer">
+<!-- Word Item 1 (Selected State) -->
+<div class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-all shadow-[0_0_20px_rgba(208,188,255,0.06)] cursor-pointer group relative overflow-hidden" data-word="reluctant">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary rounded-l-full"></div>
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Reluctant</span>
+<span class="font-body-sm text-body-sm text-outline-variant font-mono">/rɪˈlʌk.tənt/</span>
+<button class="w-7 h-7 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-secondary transition-all" title="Tələffüz et">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-sm text-label-sm font-bold">B2</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">Sifət</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-medium mb-space-sm truncate">
+                Həvəssiz, könülsüz, istəksiz
+              </div>
+<div class="flex flex-wrap items-center gap-space-md text-body-sm">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+<span>AI: "Rul qatdan" assosiasiyası</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Mənimsəmə:</span>
+<div class="w-16 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 88%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">88%</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between self-stretch">
+<span class="text-on-surface-variant font-label-sm text-label-sm">3 gün əvvəl</span>
+<div class="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+<button class="px-2.5 py-1 rounded bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-sm text-label-sm">Təkrarla</button>
+<button class="w-7 h-7 rounded bg-surface-container-highest hover:bg-surface-bright flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Word Item 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm cursor-pointer group relative overflow-hidden" data-word="ambiguous">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Ambiguous</span>
+<span class="font-body-sm text-body-sm text-outline-variant font-mono">/æmˈbɪɡ.ju.əs/</span>
+<button class="w-7 h-7 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-secondary transition-all" title="Tələffüz et">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary font-label-sm text-label-sm font-bold">C1</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">Sifət</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-medium mb-space-sm truncate">
+                İkimənalı, qeyri-müəyyən, dumanlı
+              </div>
+<div class="flex flex-wrap items-center gap-space-md text-body-sm">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+<span>AI: "Əmimin bığı" hekayəsi</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Mənimsəmə:</span>
+<div class="w-16 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 94%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">94%</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between self-stretch">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Dünən</span>
+<div class="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+<button class="px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm">Təkrarla</button>
+<button class="w-7 h-7 rounded bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Word Item 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm cursor-pointer group relative overflow-hidden" data-word="obstinate">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Obstinate</span>
+<span class="font-body-sm text-body-sm text-outline-variant font-mono">/ˈɒb.stɪ.nət/</span>
+<button class="w-7 h-7 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-secondary transition-all" title="Tələffüz et">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-sm text-label-sm font-bold">B2</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">Sifət</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-medium mb-space-sm truncate">
+                İnadkar, tərs, dediyindən dönməyən
+              </div>
+<div class="flex flex-wrap items-center gap-space-md text-body-sm">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+<span>AI: "O stəkan inadla düşmür"</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Mənimsəmə:</span>
+<div class="w-16 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 62%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-bold">62%</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between self-stretch">
+<span class="text-on-surface-variant font-label-sm text-label-sm">1 həftə əvvəl</span>
+<div class="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+<button class="px-2.5 py-1 rounded bg-secondary-container/20 hover:bg-secondary-container/30 text-secondary font-label-sm text-label-sm">Təkrar tələb olunur</button>
+<button class="w-7 h-7 rounded bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Word Item 4 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm cursor-pointer group relative overflow-hidden" data-word="persevere">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Persevere</span>
+<span class="font-body-sm text-body-sm text-outline-variant font-mono">/ˌpɜː.sɪˈvɪər/</span>
+<button class="w-7 h-7 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-secondary transition-all" title="Tələffüz et">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-sm text-label-sm font-bold">B2</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">Fel</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-medium mb-space-sm truncate">
+                Dözmək, səbir etmək, əzmlə davam etmək
+              </div>
+<div class="flex flex-wrap items-center gap-space-md text-body-sm">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+<span>AI: "Pərdəni səbirlə toxuyan"</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Mənimsəmə:</span>
+<div class="w-16 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 79%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">79%</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between self-stretch">
+<span class="text-on-surface-variant font-label-sm text-label-sm">5 gün əvvəl</span>
+<div class="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+<button class="px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm">Təkrarla</button>
+<button class="w-7 h-7 rounded bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Word Item 5 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm cursor-pointer group relative overflow-hidden" data-word="resilient">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Resilient</span>
+<span class="font-body-sm text-body-sm text-outline-variant font-mono">/rɪˈzɪl.jənt/</span>
+<button class="w-7 h-7 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-secondary transition-all" title="Tələffüz et">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary font-label-sm text-label-sm font-bold">C1</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">Sifət</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-medium mb-space-sm truncate">
+                Çətinliklərə dözümlü, elastik, tez toparlanan
+              </div>
+<div class="flex flex-wrap items-center gap-space-md text-body-sm">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+<span>AI: "Rezin kimi bərpa olan"</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Mənimsəmə:</span>
+<div class="w-16 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 96%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">96%</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between self-stretch">
+<span class="text-on-surface-variant font-label-sm text-label-sm">2 gün əvvəl</span>
+<div class="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+<button class="px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm">Təkrarla</button>
+<button class="w-7 h-7 rounded bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Word Item 6 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all shadow-sm cursor-pointer group relative overflow-hidden" data-word="diligent">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Diligent</span>
+<span class="font-body-sm text-body-sm text-outline-variant font-mono">/ˈdɪl.ɪ.dʒənt/</span>
+<button class="w-7 h-7 rounded-full bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-secondary transition-all" title="Tələffüz et">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+</button>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-sm text-label-sm font-bold">B2</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm">Sifət</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface font-medium mb-space-sm truncate">
+                Çalışqan, zəhmətkeş, diqqətli
+              </div>
+<div class="flex flex-wrap items-center gap-space-md text-body-sm">
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-primary/10 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+<span>AI: "Dillənmədən çalışan şagird"</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-outline">Mənimsəmə:</span>
+<div class="w-16 bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 82%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">82%</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end justify-between self-stretch">
+<span class="text-on-surface-variant font-label-sm text-label-sm">4 gün əvvəl</span>
+<div class="flex items-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+<button class="px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm">Təkrarla</button>
+<button class="w-7 h-7 rounded bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination Bar -->
+<div class="flex items-center justify-between pt-space-md text-on-surface-variant font-body-sm text-body-sm">
+<span>Göstərilir: 1–6 / 248 söz</span>
+<div class="flex items-center gap-space-xs">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center hover:bg-surface-bright disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm flex items-center justify-center">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm flex items-center justify-center">3</button>
+<span class="px-1">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm flex items-center justify-center">42</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center hover:bg-surface-bright">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- RIGHT: Selected Word Card Preview (5 Cols Sticky) -->
+<div class="lg:col-span-5 sticky top-24 space-y-space-md">
+<!-- Main Dedicated Detail Card -->
+<div class="p-space-lg rounded-2xl bg-surface-container shadow-xl relative overflow-hidden">
+<!-- Ambient Card Radial Light -->
+<div class="absolute -top-16 -right-16 w-48 h-48 bg-primary/15 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Header of Detail -->
+<div class="flex items-center justify-between mb-space-md pb-space-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">style</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Seçilmiş Sözün Tam Kartı</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" title="Yadda saxla / Əlfəcin">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-high hover:bg-surface-bright flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" title="Paylaş">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+<!-- Word Overview Header -->
+<div class="mb-space-lg">
+<div class="flex items-center justify-between gap-space-sm">
+<h2 class="font-display-lg text-display-lg font-black text-on-surface tracking-tight" id="detailWordTitle">RELUCTANT</h2>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 rounded-full bg-secondary/15 text-secondary font-label-md text-label-md font-bold">B2 Səviyyə</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm mt-1 text-on-surface-variant">
+<span class="font-headline-sm text-headline-sm font-mono text-secondary">/rɪˈlʌk.tənt/</span>
+<button class="w-9 h-9 rounded-full bg-secondary/10 hover:bg-secondary/20 flex items-center justify-center text-secondary transition-all shadow-[0_0_12px_rgba(56,189,248,0.2)]">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+</button>
+<span class="font-body-md text-body-md text-outline">• Sifət (Adjective)</span>
+</div>
+</div>
+<!-- Azerbaijani Definition Box -->
+<div class="p-space-md rounded-xl bg-surface-container-high mb-space-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block mb-1">Azərbaycan dilində mənası:</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+              Həvəssiz, könülsüz, bir işi görməkdə tərəddüdlü
+            </div>
+</div>
+<!-- Visual Association Illustration (Generative AI Artwork) -->
+<div class="relative w-full h-44 rounded-xl overflow-hidden mb-space-md group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Futuristic neon sci-fi illustration showing a driver staring reluctantly at an unfolded car steering wheel folded like origami, deep violet and cyan cyber aesthetic, moody dark obsidian background, sharp lighting focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXUSy7dvgKaYFipfa34P4Sq5zW2Zoo3DE-G1ykxzpWcmV6dEsIk50GHP5bxAGQobJ6mBPSxDqGBHnlKXp82fANnoa8LX8FgI1-Ye8Z6Lb3WjroMci5EaiRm76Xc3TZjusdTvAceKl_rwyMiQ-ZL80pi_QCGP6zBJ2Ds-Z5Xc8jb6Z85PtIJiH32dJCICFlU8zYFyI5rb--USpobBGFx645Y2xje5k-87eTdUZL1_IZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/30 to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-body-sm text-on-surface">
+<span class="bg-surface-container-lowest/80 backdrop-blur px-2.5 py-1 rounded font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span> Vizual Mental Xəritə
+              </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Assosiativ yaddaş: 100% aktiv</span>
+</div>
+</div>
+<!-- The AI Mnemonic Association Card Box (Core Brand Component) -->
+<div class="p-space-md rounded-xl bg-gradient-to-br from-surface-container-high to-surface-container-highest mb-space-lg relative overflow-hidden shadow-[0_0_24px_0_rgba(139,92,246,0.18)]">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">psychology</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">AI Mnemonik Əlaqə &amp; Hekayə</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary/20 text-primary font-label-sm text-label-sm font-semibold">Səs Fonetikası</span>
+</div>
+<!-- Association Bridge -->
+<div class="my-space-sm p-space-sm rounded-lg bg-surface-container-lowest/70">
+<span class="font-label-sm text-label-sm text-secondary font-bold block mb-0.5">SƏS BƏNZƏRLİYİ:</span>
+<p class="font-body-md text-body-md text-on-surface">
+<span class="text-primary font-bold">"Reluctant"</span> → <span class="text-secondary font-bold">"Rul qatdan"</span> (Rulu qatlayan sürücü)
+              </p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<strong class="text-on-surface">Hekayə:</strong> Sürücüyə maşını yağışda sürmək tapşırılanda o, maşının <span class="text-primary font-semibold">rulunu qat-qat</span> büküb gizlətməyə çalışır, çünki bu səfərə çıxmağa çox <span class="text-secondary font-semibold">həvəssiz və könülsüzdür</span>. Bu qəribə obraz beynində sözü dərhal canlandıracaq!
+            </p>
+</div>
+<!-- Contextual Sentence Section -->
+<div class="space-y-space-xs mb-space-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Nümunə Cümlə:</span>
+<div class="p-space-sm rounded-lg bg-surface-container-low">
+<p class="font-body-md text-body-md text-on-surface italic">
+                "She was <span class="text-secondary font-semibold">reluctant</span> to leave her current project before it was finished."
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                (O, cari layihəsi bitməmiş onu tərk etməyə <span class="text-on-surface">könülsüz</span> yanaşırdı.)
+              </p>
+</div>
+</div>
+<!-- Bottom Action Buttons in Detail Card -->
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs">
+<button class="py-2.5 px-space-sm rounded-lg bg-tertiary-container text-on-tertiary hover:opacity-90 font-label-md text-label-md font-bold flex items-center justify-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+              Öyrəndim
+            </button>
+<button class="py-2.5 px-space-sm rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-all">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+              Yenilə
+            </button>
+<button class="py-2.5 px-space-sm rounded-lg bg-secondary text-on-secondary hover:bg-secondary-fixed font-label-md text-label-md font-bold flex items-center justify-center gap-1 transition-all shadow-[0_0_12px_rgba(123,208,255,0.2)]">
+<span class="material-symbols-outlined text-[16px]">play_arrow</span>
+              Testdə sına
+            </button>
+</div>
+</div>
+<!-- Telemetry & Recall Insight Mini Card -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">neurology</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface font-bold block">Assosiasiya effekti</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sözlərin yadda qalma ehtimalı: 92%</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">help_outline</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive switcher for word selection highlight
+  document.addEventListener('DOMContentLoaded', () => {
+    const listItems = document.querySelectorAll('#vocabularyListContainer [data-word]');
+    const wordTitle = document.getElementById('detailWordTitle');
+
+    listItems.forEach(item => {
+      item.addEventListener('click', () => {
+        listItems.forEach(el => {
+          el.classList.remove('bg-surface-container', 'shadow-[0_0_20px_rgba(208,188,255,0.06)]');
+          el.classList.add('bg-surface-container-low');
+          const marker = el.querySelector('.absolute.left-0');
+          if (marker) marker.remove();
+        });
+
+        item.classList.remove('bg-surface-container-low');
+        item.classList.add('bg-surface-container', 'shadow-[0_0_20px_rgba(208,188,255,0.06)]');
+        
+        const bar = document.createElement('div');
+        bar.className = 'absolute left-0 top-0 bottom-0 w-1.5 bg-primary rounded-l-full';
+        item.prepend(bar);
+
+        const wordText = item.getAttribute('data-word');
+        if (wordText && wordTitle) {
+          wordTitle.textContent = wordText.toUpperCase();
+        }
+      });
+    });
+  });
+</script></div></main><footer class="w-full bg-surface-container-lowest py-space-xl mt-space-2xl"><div class="max-w-7xl mx-auto px-margin-md flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm text-on-surface font-bold">Güolingo</span><span class="font-body-sm text-body-sm text-on-surface-variant">— Süni intellekt dəstəkli mnemonik lüğət platforması</span></div><div class="font-body-sm text-body-sm">© 2025 Güolingo. Bütün hüquqlar qorunur.</div></div></footer></body></html>

@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-outline-variant: #494454;
+  --color-secondary-fixed: #c4e7ff;
+  --color-on-error-container: #ffdad6;
+  --color-on-primary-fixed: #23005c;
+  --color-surface-variant: #2f3446;
+  --color-background: #0e1323;
+  --color-on-surface: #dee1f9;
+  --color-primary: #d0bcff;
+  --color-secondary-container: #00a6e0;
+  --color-surface-container: #1a1f30;
+  --color-secondary: #7bd0ff;
+  --color-error: #ffb4ab;
+  --color-on-tertiary-fixed: #002109;
+  --color-tertiary-container: #00a74b;
+  --color-primary-fixed-dim: #d0bcff;
+  --color-surface-container-high: #25293a;
+  --color-error-container: #93000a;
+  --color-surface-container-highest: #2f3446;
+  --color-on-error: #690005;
+  --color-tertiary: #4ae176;
+  --color-inverse-surface: #dee1f9;
+  --color-on-tertiary-fixed-variant: #005321;
+  --color-inverse-on-surface: #2b3041;
+  --color-on-surface-variant: #cbc3d7;
+  --color-surface-bright: #34394a;
+  --color-on-background: #dee1f9;
+  --color-surface-dim: #0e1323;
+  --color-surface-container-low: #161b2b;
+  --color-surface-container-lowest: #080d1d;
+  --color-primary-container: #a078ff;
+  --color-tertiary-fixed-dim: #4ae176;
+  --color-on-secondary-fixed: #001e2c;
+  --color-on-tertiary: #003915;
+  --color-surface: #0e1323;
+  --color-outline: #958ea0;
+  --color-tertiary-fixed: #6bff8f;
+  --color-on-secondary: #00354a;
+  --color-inverse-primary: #6d3bd7;
+  --color-on-primary-fixed-variant: #5516be;
+  --color-surface-tint: #d0bcff;
+  --color-on-secondary-fixed-variant: #004c69;
+  --color-on-primary-container: #340080;
+  --color-primary-fixed: #e9ddff;
+  --color-on-primary: #3c0091;
+  --color-secondary-fixed-dim: #7bd0ff;
+  --color-on-secondary-container: #00374d;
+  --color-on-tertiary-container: #003111;
+
+  --spacing-space-xs: 0.25rem;
+  --spacing-space-sm: 0.5rem;
+  --spacing-space-md: 1rem;
+  --spacing-space-lg: 1.5rem;
+  --spacing-space-xl: 2rem;
+  --spacing-space-2xl: 3rem;
+  --spacing-gutter: 1rem;
+  --spacing-gutter-lg: 1.5rem;
+  --spacing-margin: 1rem;
+  --spacing-margin-md: 1.5rem;
+  --spacing-margin-lg: 2.5rem;
+}
+
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0e1323;
+    color: #dee1f9;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(149, 142, 160, 0.25);
+  border-radius: 9999px;
+}
+
+.text-display-lg {
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.text-headline-lg {
+  font-size: 30px;
+  line-height: 38px;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+.text-headline-md {
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.text-headline-sm {
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.005em;
+  font-weight: 600;
+}
+
+.text-body-lg {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+.text-body-md {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.text-body-sm {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.text-label-lg {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+}
+
+.text-label-md {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+.text-label-sm {
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  user-select: none;
+}
+
+.material-symbols-filled {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
