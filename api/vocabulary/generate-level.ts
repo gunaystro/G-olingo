@@ -12,42 +12,43 @@ import {
   type GeneratedVocabPayload,
   type VercelRequest,
   type VercelResponse,
-} from "../_lib/gemini";
+} from "../_lib/gemini.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== "POST") {
-    sendJson(res, 405, { error: "Yalnız POST sorğusu qəbul edilir." });
-    return;
-  }
+  try {
+    if (req.method !== "POST") {
+      sendJson(res, 405, { error: "Yalnız POST sorğusu qəbul edilir." });
+      return;
+    }
 
-  const client = getGeminiClient();
-  if (!client) {
-    sendJson(res, 503, {
-      error:
-        "GEMINI_API_KEY təyin edilməyib. Vercel layihənizin Settings > Environment Variables bölməsindən GEMINI_API_KEY əlavə edib yenidən deploy edin.",
-      code: "API_KEY_MISSING",
-    });
-    return;
-  }
+    const client = getGeminiClient();
+    if (!client) {
+      sendJson(res, 503, {
+        error:
+          "GEMINI_API_KEY təyin edilməyib. Vercel layihənizin Settings > Environments > Production bölməsindən GEMINI_API_KEY əlavə edib Redeploy edin.",
+        code: "API_KEY_MISSING",
+      });
+      return;
+    }
 
-  const body = await parseJsonBody(req);
-  const level = typeof body.level === "string" ? body.level.trim().toUpperCase() : "";
-  if (!ALLOWED_LEVELS.has(level)) {
-    sendJson(res, 400, { error: "Düzgün CEFR səviyyəsi seçin (A1–C2)." });
-    return;
-  }
+    const body = await parseJsonBody(req);
+    const level = typeof body.level === "string" ? body.level.trim().toUpperCase() : "";
+    if (!ALLOWED_LEVELS.has(level)) {
+      sendJson(res, 400, { error: "Düzgün CEFR səviyyəsi seçin (A1–C2)." });
+      return;
+    }
 
-  const excludeWordsRaw = Array.isArray(body.excludeWords) ? body.excludeWords : [];
-  const excludeSet = new Set<string>(
-    excludeWordsRaw
-      .filter((w: unknown): w is string => typeof w === "string")
-      .map((w: string) => w.trim().toLowerCase())
-      .slice(0, 200),
-  );
-  const count = Math.min(5, Math.max(1, Number(body.count) || 4));
-  const excludeList = Array.from(excludeSet).slice(0, 60).join(", ");
+    const excludeWordsRaw = Array.isArray(body.excludeWords) ? body.excludeWords : [];
+    const excludeSet = new Set<string>(
+      excludeWordsRaw
+        .filter((w: unknown): w is string => typeof w === "string")
+        .map((w: string) => w.trim().toLowerCase())
+        .slice(0, 200),
+    );
+    const count = Math.min(5, Math.max(1, Number(body.count) || 4));
+    const excludeList = Array.from(excludeSet).slice(0, 60).join(", ");
 
-  const prompt = `Generate ${count} distinct, high-utility English vocabulary cards strictly appropriate for CEFR level ${level} for Azerbaijani learners.
+    const prompt = `Generate ${count} distinct, high-utility English vocabulary cards strictly appropriate for CEFR level ${level} for Azerbaijani learners.
 Do NOT include any of these already-existing words: [${excludeList || "none"}].
 
 For each word:
@@ -55,7 +56,6 @@ For each word:
 - Create a clever, unusual Azerbaijani phonetic sound-alike mnemonic bridge and a vivid one-sentence memorable story.
 - Provide 2 English example sentences with Azerbaijani translations and 3 common collocations with Azerbaijani explanations.`;
 
-  try {
     const response = await generateContentWithRetry(client, {
       model: "gemini-4-hydrogen",
       contents: prompt,

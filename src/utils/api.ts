@@ -68,11 +68,14 @@ async function parseResponse<T>(
   }
 
   if (!parsed) {
+    const contentType = response.headers.get("content-type") || "";
+    const looksLikeHtml = contentType.includes("text/html") || rawText.trimStart().startsWith("<");
     return {
       ok: false,
       status: response.status,
-      error:
-        "Server JSON əvəzinə fərqli cavab qaytardı. API funksiyalarının (/api/*) aktiv olduğunu yoxlayın.",
+      error: looksLikeHtml
+        ? "API əvəzinə HTML səhifə qayıtdı. Saytı GitHub Pages-də deyil, Vercel üzərində açdığınızdan və son kodun GitHub-a push edildiyindən əmin olun."
+        : "Server JSON əvəzinə fərqli cavab qaytardı. API funksiyalarının (/api/*) aktiv olduğunu yoxlayın.",
     };
   }
 
