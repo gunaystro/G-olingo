@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { CefrLevel, VocabCard, VisualTheme } from "../types/vocabulary";
+import { postJson } from "../utils/api";
 import { speakEnglish } from "../utils/speech";
 import { MnemonicIllustration } from "./MnemonicIllustration";
 
 interface AddWordViewProps {
   existingWords: VocabCard[];
   learnedIds: Set<string>;
+  geminiConfigured: boolean | null;
   onSavePersonalWord: (card: VocabCard) => void;
   onMarkLearned: (card: VocabCard) => void;
   onOpenExistingCard: (wordId: string) => void;
@@ -16,6 +18,7 @@ const LEVELS: CefrLevel[] = ["A1", "A2", "B1", "B2", "C1", "C2"];
 export const AddWordView: React.FC<AddWordViewProps> = ({
   existingWords,
   learnedIds,
+  geminiConfigured,
   onSavePersonalWord,
   onMarkLearned,
   onOpenExistingCard,
@@ -64,23 +67,22 @@ export const AddWordView: React.FC<AddWordViewProps> = ({
     setSavedCardId(null);
 
     try {
-      const response = await fetch("/api/vocabulary/generate-card", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const result = await postJson<{ card: VocabCard }>(
+        "/api/vocabulary/generate-card",
+        {
           word: cleaned,
           level: selectedLevel,
           strategy,
-        }),
-      });
+        },
+        "Söz kartı yaradılarkən xəta baş verdi.",
+      );
 
-      const data = await response.json();
-      if (!response.ok) {
-        setErrorMsg(data?.error || "Söz kartı yaradılarkən xəta baş verdi.");
+      if (!result.ok) {
+        setErrorMsg(result.error);
         return;
       }
 
-      const raw = data.card;
+      const raw = result.data.card;
       const newCard: VocabCard = {
         id: `personal-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
         word: raw.word,
@@ -103,8 +105,6 @@ export const AddWordView: React.FC<AddWordViewProps> = ({
       };
 
       setGeneratedCard(newCard);
-    } catch {
-      setErrorMsg("Serverlə əlaqə qurula bilmədi. Zəhmət olmasa yenidən cəhd edin.");
     } finally {
       setIsLoading(false);
     }
@@ -171,9 +171,18 @@ export const AddWordView: React.FC<AddWordViewProps> = ({
           </div>
 
           <div className="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-xl shadow-sm w-fit">
-            <span className="material-symbols-outlined text-secondary text-[20px]">psychology</span>
+            <span
+              className={`material-symbols-outlined text-[20px] ${
+                geminiConfigured === false ? "text-error" : "text-secondary"
+              }`}
+            >
+              psychology
+            </span>
             <span className="text-label-md text-on-surface">
-              Koqnitiv Yaddaş: <span className="text-secondary font-bold">Aktiv</span>
+              Koqnitiv Yaddaş:{" "}
+              <span className={geminiConfigured === false ? "text-error font-bold" : "text-secondary font-bold"}>
+                {geminiConfigured === false ? "Açar tələb olunur" : "Aktiv"}
+              </span>
             </span>
           </div>
         </div>
@@ -314,6 +323,19 @@ export const AddWordView: React.FC<AddWordViewProps> = ({
                   </button>
                 </div>
               </div>
+
+              {geminiConfigured === false && !errorMsg && (
+                <div className="rounded-xl bg-error-container/25 border border-error/35 p-3 flex items-start gap-2.5 text-on-error-container text-body-sm">
+                  <span className="material-symbols-outlined text-error text-[18px] mt-0.5 shrink-0">
+                    vpn_key
+                  </span>
+                  <span>
+                    Serverdə <strong className="font-semibold">GEMINI_API_KEY</strong> təyin edilməyib.
+                    Vercel layihənizin <strong className="font-semibold">Settings &gt; Environment Variables</strong>{" "}
+                    bölməsinə açarı əlavə edib yenidən deploy edin.
+                  </span>
+                </div>
+              )}
 
               {errorMsg && (
                 <div className="rounded-xl bg-error-container/30 border border-error/40 p-3 flex items-start gap-2.5 text-on-error-container text-body-sm">

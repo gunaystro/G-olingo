@@ -157,7 +157,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             </span>
             <div className="text-body-sm text-on-surface-variant">
               {geminiConfigured === false
-                ? "Serverdə GEMINI_API_KEY təyin edilməyib. AI ilə yeni söz yaratmaq üçün Settings > Secrets bölməsindən açarı əlavə edin."
+                ? "Serverdə GEMINI_API_KEY təyin edilməyib. AI ilə yeni söz yaratmaq üçün Vercel Environment Variables (və ya Settings > Secrets) bölməsindən açarı əlavə edin."
                 : "Gemini AI server üzərindən aktivdir. Bütün yeni sözlər və səviyyə kartları strukturlaşdırılmış JSON ilə yaradılır."}
               {reviewCount > 0 && (
                 <span className="block mt-1 text-secondary">

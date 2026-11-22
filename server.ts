@@ -289,7 +289,7 @@ function handleGeminiError(res: Response, err: unknown): void {
   ) {
     res.status(400).json({
       error:
-        "Gemini API açarı etibarsızdır. Zəhmət olmasa Settings > Secrets bölməsindən GEMINI_API_KEY dəyərini yoxlayın.",
+        "Gemini API açarı etibarsızdır. Zəhmət olmasa Vercel Environment Variables (və ya Settings > Secrets) bölməsindən GEMINI_API_KEY dəyərini yoxlayın.",
       code: "API_KEY_INVALID",
     });
     return;
@@ -303,7 +303,7 @@ function handleGeminiError(res: Response, err: unknown): void {
   ) {
     res.status(403).json({
       error:
-        "Gemini API açarı etibarsızdır və ya icazəsi yoxdur. Zəhmət olmasa Settings > Secrets bölməsini yoxlayın.",
+        "Gemini API açarı etibarsızdır və ya icazəsi yoxdur. Zəhmət olmasa Vercel Environment Variables (və ya Settings > Secrets) bölməsini yoxlayın.",
       code: "API_KEY_INVALID",
     });
     return;
@@ -356,7 +356,7 @@ async function startServer() {
     if (!client) {
       res.status(503).json({
         error:
-          "GEMINI_API_KEY təyin edilməyib. AI ilə söz yaratmaq üçün Settings > Secrets bölməsindən GEMINI_API_KEY əlavə edin.",
+          "GEMINI_API_KEY təyin edilməyib. AI ilə söz yaratmaq üçün Vercel Environment Variables (və ya Settings > Secrets) bölməsindən GEMINI_API_KEY əlavə edin.",
         code: "API_KEY_MISSING",
       });
       return;
@@ -432,7 +432,7 @@ Requirements:
     if (!client) {
       res.status(503).json({
         error:
-          "GEMINI_API_KEY təyin edilməyib. Səviyyə üzrə yeni AI sözləri yaratmaq üçün Settings > Secrets bölməsindən GEMINI_API_KEY əlavə edin.",
+          "GEMINI_API_KEY təyin edilməyib. Səviyyə üzrə yeni AI sözləri yaratmaq üçün Vercel Environment Variables (və ya Settings > Secrets) bölməsindən GEMINI_API_KEY əlavə edin.",
         code: "API_KEY_MISSING",
       });
       return;
@@ -507,7 +507,7 @@ For each word:
     if (!client) {
       res.status(503).json({
         error:
-          "GEMINI_API_KEY təyin edilməyib. Yeni assosiasiya yaratmaq üçün Settings > Secrets bölməsindən GEMINI_API_KEY əlavə edin.",
+          "GEMINI_API_KEY təyin edilməyib. Yeni assosiasiya yaratmaq üçün Vercel Environment Variables (və ya Settings > Secrets) bölməsindən GEMINI_API_KEY əlavə edin.",
         code: "API_KEY_MISSING",
       });
       return;

@@ -7,6 +7,7 @@ import {
   loadPersistedState,
   savePersistedState,
 } from "./utils/storage";
+import { getJson, postJson } from "./utils/api";
 import { Header } from "./components/Header";
 import { DashboardView } from "./components/DashboardView";
 import { VocabularyCardView } from "./components/VocabularyCardView";
@@ -32,16 +33,14 @@ export default function App() {
   }, [state]);
 
   useEffect(() => {
-    fetch("/api/health")
-      .then((res) => res.json())
-      .then((data) => {
-        if (typeof data?.geminiConfigured === "boolean") {
-          setGeminiConfigured(data.geminiConfigured);
-        }
-      })
-      .catch(() => {
-        // Ignore transient health check error
-      });
+    getJson<{ ok: boolean; geminiConfigured: boolean }>(
+      "/api/health",
+      "Server vəziyyəti yoxlanıla bilmədi.",
+    ).then((result) => {
+      if (result.ok && typeof result.data.geminiConfigured === "boolean") {
+        setGeminiConfigured(result.data.geminiConfigured);
+      }
+    });
   }, []);
 
   const showToast = (msg: string) => {
@@ -179,19 +178,18 @@ export default function App() {
 
     try {
       const excludeWords = allWords.map((w) => w.word);
-      const response = await fetch("/api/vocabulary/generate-level", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ level, excludeWords, count: 4 }),
-      });
+      const result = await postJson<{ cards?: VocabCard[] }>(
+        "/api/vocabulary/generate-level",
+        { level, excludeWords, count: 4 },
+        "Səviyyə üçün yeni sözlər yaradıla bilmədi.",
+      );
 
-      const data = await response.json();
-      if (!response.ok) {
-        setLevelError(data?.error || "Səviyyə üçün yeni sözlər yaradıla bilmədi.");
+      if (!result.ok) {
+        setLevelError(result.error);
         return;
       }
 
-      const rawCards = Array.isArray(data.cards) ? data.cards : [];
+      const rawCards = Array.isArray(result.data.cards) ? result.data.cards : [];
       if (rawCards.length === 0) {
         setLevelError("Yeni təkrarolunmaz söz tapılmadı. Yenidən cəhd edin.");
         return;
@@ -235,8 +233,6 @@ export default function App() {
         setActiveCardId(newCards[0].id);
         showToast(`${level} səviyyəsi üçün ${newCards.length} yeni AI sözü əlavə edildi!`);
       }
-    } catch {
-      setLevelError("Serverlə əlaqə zamanı xəta baş verdi.");
     } finally {
       setIsGeneratingLevel(false);
     }
@@ -247,24 +243,31 @@ export default function App() {
     setLevelError(null);
 
     try {
-      const response = await fetch("/api/vocabulary/regenerate-mnemonic", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const result = await postJson<{
+        mnemonic: {
+          mnemonicBridgeAz: string;
+          mnemonicHookPhrase: string;
+          mnemonicStoryAz: string;
+          visualSceneTitle: string;
+          visualSceneAz: string;
+        };
+      }>(
+        "/api/vocabulary/regenerate-mnemonic",
+        {
           word: card.word,
           meaningAz: card.meaningAz,
           level: card.level,
           previousBridge: card.mnemonicBridgeAz,
-        }),
-      });
+        },
+        "Yeni assosiasiya yaradıla bilmədi.",
+      );
 
-      const data = await response.json();
-      if (!response.ok) {
-        setLevelError(data?.error || "Yeni assosiasiya yaradıla bilmədi.");
+      if (!result.ok) {
+        setLevelError(result.error);
         return;
       }
 
-      const m = data.mnemonic;
+      const m = result.data.mnemonic;
       setState((prev) => ({
         ...prev,
         mnemonicOverrides: {
@@ -279,8 +282,6 @@ export default function App() {
         },
       }));
       showToast(`"${card.word}" üçün yeni mnemonik assosiasiya yaradıldı!`);
-    } catch {
-      setLevelError("AI ilə əlaqə zamanı xəta baş verdi.");
     } finally {
       setIsRegeneratingMnemonic(false);
     }
@@ -372,6 +373,7 @@ export default function App() {
             <AddWordView
               existingWords={allWords}
               learnedIds={learnedIds}
+              geminiConfigured={geminiConfigured}
               onSavePersonalWord={handleSavePersonalWord}
               onMarkLearned={handleMarkLearned}
               onOpenExistingCard={handleOpenWordCard}
